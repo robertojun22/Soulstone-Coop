@@ -1,0 +1,11 @@
+Soulstone Coop - local co-op mod for Soulstone Survivors
+Copyright (c) 2026 robertojun22
+
+This work is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License
+(CC BY-NC-SA 4.0). To view a copy of this license, visit https://creativecommons.org/licenses/by-nc-sa/4.0/
+
+In short: you may share and adapt this mod, as long as you give credit, do not use it for commercial purposes, and
+distribute your changes under the same license.
+
+Soulstone Survivors belongs to its developer, Game Smithing; this mod contains no game code or assets.
+BepInEx, HarmonyX and Il2CppInterop (included in the full package) keep their own licenses (LGPL-2.1 and MIT).

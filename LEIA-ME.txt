@@ -1,0 +1,135 @@
+SOULSTONE COOP 1.3.0 - co-op local para Soulstone Survivors (2 a 4 jogadores no mesmo PC)
+=========================================================================================
+
+REQUISITOS
+- Windows, com Soulstone Survivors da Steam (testado na versão 1.5d2).
+- BepInEx 6 (IL2CPP), build be.788. O pacote "completo" já traz o BepInEx.
+- Internet na PRIMEIRA abertura do jogo depois de instalar: o BepInEx baixa as bibliotecas do Unity e
+  prepara os arquivos dele. A primeira abertura demora de 1 a 3 minutos com a tela parada. É normal.
+- Um controle por jogador extra. O teclado e o mouse contam como um jogador (só um teclado por PC).
+
+QUAL ARQUIVO USAR
+- SoulstoneCoop-1.3.0-completo.zip -> para quem ainda NÃO tem BepInEx no jogo (o mais comum).
+- SoulstoneCoop-1.3.0-so-o-mod.zip -> para quem JÁ tem o BepInEx 6 IL2CPP instalado no Soulstone Survivors
+  (quem já usa uma versão anterior do mod pode usar este e só substituir a DLL).
+
+COMO INSTALAR
+1. Na Steam: clique com o botão direito em Soulstone Survivors > Gerenciar > Ver arquivos locais.
+   Abre a pasta do jogo (onde está "Soulstone Survivors.exe").
+2. Extraia TODO o conteúdo do zip DENTRO dessa pasta, mantendo as pastas.
+   Ao final devem existir, ao lado do "Soulstone Survivors.exe":
+     winhttp.dll
+     doorstop_config.ini
+     .doorstop_version
+     dotnet\            (pasta)
+     BepInEx\core\      (pasta)
+     BepInEx\plugins\SoulstoneCoop.dll
+   (No pacote "só o mod" vem apenas BepInEx\plugins\SoulstoneCoop.dll.)
+3. Abra o jogo pela Steam normalmente e espere a primeira abertura terminar.
+
+COMO JOGAR
+- No menu principal, entre no botão "Co-op".
+- Cada jogador aperta A no próprio controle (ou Enter no teclado) para entrar. A ordem de entrada define P1, P2,
+  P3 e P4. B ou Esc sai. O P1 confirma com START (ou Enter, se estiver no teclado).
+- Cada jogador escolhe o próprio herói na vez dele. Na vez de um jogador extra, o botão "Lutar" vira "Pronto".
+- Para refazer a entrada dos jogadores: na aba Lutar, aperte B no controle (ou Backspace no teclado) e confirme
+  "Voltar ao menu inicial".
+- Ajustes do co-op ficam em Opções > aba "Co-op" (LB/RB chegam até ela; setas e A mudam as opções):
+  etiquetas P1..P4 sobre os heróis, buffs compartilhados e quantidade de inimigos na tela.
+
+CONFIGURAÇÃO AVANÇADA (opcional)
+- Arquivo: BepInEx\config\SoulstoneCoop.cfg. Ele é criado na primeira abertura com os valores padrão.
+- Quem atualiza de uma versão anterior NÃO precisa apagar esse arquivo: as opções novas entram sozinhas, e o valor
+  antigo de resistência de elites (0,5) passa sozinho para o novo padrão. Um valor que você tenha mudado à mão
+  fica como está. A seção [Testing] que sobrou de versões antigas não faz nada.
+- Opções novas na 1.3.0: [Coop] ShareTitanCards (cartas de titã para todos), MaxExtraLords (Senhores a mais por
+  leva), LordToughnessPerExtraPlayer (vida dos Senhores), RegularToughnessPerPlayerAbove2 (vida dos inimigos comuns
+  com 3 ou 4 jogadores; padrão 0), SkillSlotsLessPerPlayerAbove2 (menos espaços de habilidade com 3 ou 4 jogadores;
+  padrão 0 = desligado); [HUD] OwnPendingLevelUps e BackToTitleButton.
+
+NOVIDADES DA 1.3.0
+Equilíbrio
+- Inimigos comuns e elites: 2,5x com 2 jogadores, 3,5x com 3 e 4,25x com 4 (antes 2,5x, 4x e 5,5x). O 3º e o 4º
+  jogador acrescentam menos inimigos, e o jogo fica mais leve com 4 jogadores.
+- Elites e chefes finais (titãs e chefes finais da campanha): 1,17x de vida com 2 jogadores, 1,33x com 3 e
+  1,5x com 4.
+- Senhores do Vazio: +1 por jogador além do primeiro, no máximo +2 por leva; vida 1,33x com 2 jogadores, 1,67x
+  com 3 e 2x com 4. Uma leva não repete o mesmo Senhor (antes, quando a lista do jogo acabava, vinha sempre o
+  último: até 6 Medusas), e Medusa e Plaguebringer nunca vêm juntas.
+- "Elimine monstros para invocar um Senhor": o total cresce na mesma proporção dos inimigos, arredondado à
+  centena (400 vira 1000 com 2 jogadores, 1400 com 3 e 1700 com 4).
+- O ritmo das levas acelera no máximo 2x (antes 3x).
+- Guardiões do baú e do cristal e o inimigo do saque não são mais multiplicados.
+- Cartas de poder dos titãs vão para todos: cada jogador ganha a própria cópia (cartas de habilidade ficam só com
+  quem escolheu).
+- Itens das habilidades únicas: quando um herói já tem 30 no mapa, o item novo substitui o que está mais longe
+  dele (antes os itens paravam de cair).
+
+Correções
+- Corpos de inimigos agora somem mesmo mais rápido com mais jogadores (na 1.2.0 essa opção não fazia efeito).
+- Habilidades únicas voltam a funcionar quando o herói levanta. Antes, a morte de um herói podia parar a
+  habilidade única dele até o fim da partida (e a morte do P1 parava a de todos): os itens deixavam de cair.
+- Habilidades únicas dos jogadores 2 a 4 (pantera da Sentinel, Demon Hunter e outras) são montadas de novo
+  sozinhas quando falham ao criar o herói.
+- Inimigos perto de um jogador extra não somem mais por estarem longe do P1.
+- O corpo de quem está caído fica parado no chão: aliados e inimigos não o empurram mais. Se a queda o arremessar
+  longe, ele volta para onde caiu.
+- Tela de subir de nível: cada jogador recebe as opções de carta das próprias runas (antes valiam as do P1 para
+  todos, e um P1 com runa de menos opções deixava todo mundo com 2 cartas).
+- Jogador extra com mais espaços de habilidade que o P1 consegue trocar a última habilidade com a barra cheia.
+- Tarefa de mapa "sobreviva": o mod a confundia com o evento da presença do Vazio da Caça aos Titãs (aumentava a
+  barreira dela por engano e lia dados errados).
+- Menos trabalho do mod na tela inicial e no hub.
+
+Interface
+- Barras de vida e de habilidades de baixo na cor de cada jogador. Os painéis das habilidades únicas ficam
+  centralizados sobre a barra de vida de cada um, e o ícone das vidas extras fica um pouco mais alto.
+- Barra de vida sobre a cabeça de cada herói, na cor do jogador e sempre visível, com as cargas de dash ao lado
+  (quem não pode dar dash, como o Death Knight a cavalo, não mostra cargas).
+- Contador próprio de níveis pendentes, à esquerda da barra de nível.
+- O ícone da mira automática do P1 fica escondido no co-op (ele ficava em cima da barra de outro jogador).
+- O anel colorido no chão acompanha o relevo do terreno e some quando o herói cai.
+- Aba Co-op: nova opção "Etiquetas P1..P4 sobre os heróis" (Mostrar / Esconder). A escolha de câmera saiu da aba
+  enquanto a tela dividida não fica pronta (a câmera continua compartilhada, com coleira).
+- Na aba Lutar, B no controle ou Backspace no teclado volta ao menu inicial (com confirmação), para refazer a
+  entrada dos jogadores.
+- O botão Co-op aparece certo já na primeira tela inicial (antes, passar o mouse no primeiro botão acendia o Co-op).
+- A janela do jogo vem para a frente ao abrir (o console do BepInEx roubava o foco).
+
+NOVIDADES DA 1.2.0
+- Itens das habilidades únicas que caem de inimigos mortos: a chance é dividida pelo número de jogadores e cada
+  herói tem no máximo 30 no mapa.
+- Menu: não trava mais alguns segundos ao sair da tela do herói com o modelo ainda carregando.
+- Aba Co-op: não muda opções sozinha com as configurações fechadas.
+- Menos engasgos em partidas longas.
+- Senhores: a contagem de "mate X monstros para invocar" não fica mais negativa.
+- Pantera da Sentinel aparece também quando a Sentinel não é o P1.
+- Vida extra dos jogadores 2 a 4 usada como a do P1 (efeito, voz e câmera lenta originais).
+
+PROBLEMAS CONHECIDOS
+- Programas que criam controle virtual (Sunshine, Parsec, DS4Windows, Steam Input em alguns casos) podem fazer
+  um controle físico aparecer duas vezes. A tela Co-op aceita um controle por vez. Se um controle mexer dois
+  heróis, feche o programa ou desative o controle virtual dele.
+- Tela dividida ainda não está disponível. A câmera é compartilhada, com "coleira".
+- Buffs que uma habilidade dá ao ACERTAR um inimigo não são compartilhados (só os que vêm ao lançar).
+
+COMO DESINSTALAR
+- Só o mod: apague BepInEx\plugins\SoulstoneCoop.dll.
+- Tudo: apague winhttp.dll, doorstop_config.ini, .doorstop_version e as pastas BepInEx e dotnet da pasta do
+  jogo. Outra opção é usar "Verificar integridade dos arquivos" na Steam depois de apagar winhttp.dll.
+
+SEGURANÇA
+- O mod não usa internet, não abre portas e não mexe em saves. Ele só lê e grava o próprio arquivo de config
+  e o log do BepInEx.
+- Baixe só de quem você confia: o BepInEx carrega qualquer DLL que estiver em BepInEx\plugins.
+
+PARA RELATAR UM PROBLEMA
+- Envie o arquivo BepInEx\LogOutput.log logo depois de fechar o jogo (ele recomeça a cada abertura) e diga o que
+  aconteceu e quantos jogadores eram.
+
+Créditos: BepInEx (https://github.com/BepInEx/BepInEx, licença LGPL-2.1), que traz o HarmonyX e o Il2CppInterop.
+Licença do mod: CC BY-NC-SA 4.0 (https://creativecommons.org/licenses/by-nc-sa/4.0/).
+
+CONFERÊNCIA (SHA256 do arquivo BepInEx\plugins\SoulstoneCoop.dll da versão 1.3.0):
+9517E00E650FB6C4B75B1387865B9F72B9BF443622CA089731E42B2502ADD26D
+No PowerShell: Get-FileHash "BepInEx\plugins\SoulstoneCoop.dll"
