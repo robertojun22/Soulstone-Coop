@@ -1,4 +1,4 @@
-SOULSTONE COOP 1.3.0 - local co-op for Soulstone Survivors (2 to 4 players on the same PC)
+SOULSTONE COOP - local co-op for Soulstone Survivors (2 to 4 players on the same PC)
 =========================================================================================
 
 REQUIREMENTS
